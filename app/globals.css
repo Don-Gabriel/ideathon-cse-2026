@@ -1,26 +1,336 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ————— GENESIS design tokens ————— */
+@theme {
+  --color-void: #06080d; /* page base, blue-shifted near-black */
+  --color-panel: #0d1119; /* raised surfaces, cards */
+  --color-line: #1c2430; /* hairline borders, grid */
+  --color-phosphor: #ffb020; /* PRIMARY — amber CRT. CTAs, active states */
+  --color-signal: #4de1ff; /* cyan — live indicators only */
+  --color-fg: #e6edf3;
+  --color-muted: #7d8794;
+  --color-danger: #ff5c5c; /* deadline warnings only */
+
+  --font-display: var(--font-chakra), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
+  /* fixed nav height + breathing room for #anchor jumps */
+  scroll-padding-top: 5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-void);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-phosphor);
+  color: var(--color-void);
+}
+
+/* Visible amber focus ring on every interactive element */
+:focus-visible {
+  outline: 2px solid var(--color-phosphor);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ————— Utilities ————— */
+
+/* Mono eyebrow label: small, uppercase, wide-tracked */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-muted);
+}
+
+/* Hairline blueprint grid, very low opacity — atmosphere, not noise */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Scanline drift across the hero */
+@media (prefers-reduced-motion: no-preference) {
+  .scanline::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 120px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(255 176 32 / 0.045),
+      transparent
+    );
+    animation: scan 9s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes scan {
+    from {
+      transform: translateY(-120px);
+    }
+    to {
+      transform: translateY(100vh);
+    }
+  }
+
+  /* LIVE node pulse */
+  .pulse-live {
+    animation: pulse-live 2s ease-in-out infinite;
+  }
+  @keyframes pulse-live {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(255 176 32 / 0.45);
+    }
+    50% {
+      box-shadow: 0 0 0 9px rgb(255 176 32 / 0);
+    }
+  }
+
+  /* Blinking caret in the hero compile log */
+  .caret::after {
+    content: "▌";
+    color: var(--color-phosphor);
+    animation: caret-blink 0.9s steps(1) infinite;
+  }
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+/* Countdown digits never shift width */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Split-flap countdown card structure */
+.flip-card {
+  position: relative;
+  display: inline-block;
+  perspective: 320px;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  background: var(--color-void);
+}
+.fc-half {
+  position: absolute;
+  inset-inline: 0;
+  height: 50%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+.fc-top {
+  top: 0;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, #131a28, var(--color-panel));
+}
+.fc-bottom {
+  bottom: 0;
+  border-radius: 0 0 3px 3px;
+  background: linear-gradient(180deg, #0b0f16, var(--color-panel));
+}
+.fc-txt {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fc-bottom .fc-txt {
+  top: -100%;
+}
+.fc-seam {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--color-void);
+  z-index: 3;
+}
+
+/* Cursor-tracking amber glow on cards (vars set by GlowCard.tsx) */
+.glow-card {
+  position: relative;
+  overflow: hidden;
+}
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 176 32 / 0.09),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.glow-card:hover::before,
+.glow-card:focus-within::before {
+  opacity: 1;
+}
+
+/* Custom cursor active: hide the native one on fine pointers */
+@media (pointer: fine) {
+  .custom-cursor,
+  .custom-cursor a,
+  .custom-cursor button,
+  .custom-cursor input,
+  .custom-cursor [role="button"] {
+    cursor: none;
+  }
+}
+
+/* FAQ smooth expand (grid-rows trick) */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.faq-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.faq-panel > div {
+  overflow: hidden;
+}
+
+/* Team card scanline sweep on hover */
+.scan-card {
+  position: relative;
+  overflow: hidden;
+}
+.scan-card::after {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: -60%;
+  width: 45%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgb(255 176 32 / 0.06),
+    transparent
+  );
+  transform: skewX(-15deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+.scan-card:hover::after {
+  left: 120%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Marquee ticker */
+  .ticker-track {
+    animation: ticker 32s linear infinite;
+  }
+  .group:hover .ticker-track {
+    animation-play-state: paused;
+  }
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Split-flap countdown: flap fall + rise */
+  .fc-fold {
+    z-index: 2;
+    transform-origin: center bottom;
+    animation: fc-fold 0.3s ease-in forwards;
+    filter: brightness(0.75);
+  }
+  @keyframes fc-fold {
+    from {
+      transform: rotateX(0);
+    }
+    to {
+      transform: rotateX(-90deg);
+    }
+  }
+  .fc-unfold {
+    z-index: 2;
+    transform-origin: center top;
+    transform: rotateX(90deg);
+    animation: fc-unfold 0.3s ease-out 0.28s forwards;
+  }
+  @keyframes fc-unfold {
+    from {
+      transform: rotateX(90deg);
+    }
+    to {
+      transform: rotateX(0);
+    }
+  }
+
+  /* Winner-card rotating conic border */
+  .shimmer-ring::before {
+    content: "";
+    position: absolute;
+    inset: -150%;
+    background: conic-gradient(
+      transparent 70%,
+      rgb(255 176 32 / 0.85) 86%,
+      transparent 100%
+    );
+    animation: spin-slow 5s linear infinite;
+  }
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* GEN-0 idle float + LED pulse */
+  .bot-float {
+    animation: bot-float 6s ease-in-out infinite;
+  }
+  @keyframes bot-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+  .bot-led {
+    animation: bot-led 2.2s ease-in-out infinite;
+  }
+  @keyframes bot-led {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
 }

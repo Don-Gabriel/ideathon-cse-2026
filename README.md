@@ -31,7 +31,6 @@ a date passed.** You only edit it when a *fact* changes.
 | Prize wording (no amounts are published) | `content/prizes.ts` |
 | Eligibility (the one rule: max team size 5) | `content/rules.ts` |
 | Submission rules, "what counts", blind-evaluation note | `content/guidelines.ts` |
-| Student office bearers | `content/team.ts` |
 
 Each file starts with a comment explaining exactly what it drives.
 
@@ -97,11 +96,13 @@ to IST. Then post an update announcing the change.
 
 ## The fun stuff (for the committee to know about)
 
-- The hero has a **working terminal** — students can type `help`, `dates`,
-  `prizes`, `rules`, `register` and a few hidden ones. All its answers come
-  from the same `content/` files as the rest of the site, so it can never
-  disagree with the page.
-- Typing `matrix` in the terminal (or the Konami code anywhere) plays a
+- The hero carries a **live status board**: one large line saying what the
+  event is doing right now ("Registration opens 17 Aug", "Screening in
+  progress", "Grand finale — live today"). It reads the visitor's own clock,
+  so it rolls over to the next phase by itself — no edit, no redeploy. The
+  wording lives in `components/ui/StatusBoard.tsx`; the dates it quotes come
+  from `content/event.ts`, so it can never disagree with the page.
+- The Konami code (up up down down left right left right B A) plays a
   5-second amber matrix-rain. Harmless, deliberate, popular with students.
 - The bottom-right HUD shows a live IST clock and the event's current phase.
 - GEN-0 (the robot) says a different line each time it's clicked.

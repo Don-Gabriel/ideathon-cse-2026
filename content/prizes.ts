@@ -10,7 +10,7 @@
  * `content/updates.ts` first, then (if wanted) expand this file.
  *
  * Drives: Prizes section, the "prizes" line in the hero stat strip,
- * the ticker and the terminal's `prizes` command.
+ * and the ticker.
  */
 
 export const prizeStatement = {

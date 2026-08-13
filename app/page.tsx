@@ -18,7 +18,6 @@ import { Prizes } from "@/components/sections/Prizes";
 import { Updates } from "@/components/sections/Updates";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
-import { Team } from "@/components/sections/Team";
 import { Footer } from "@/components/sections/Footer";
 import { derivePhase } from "@/lib/phase";
 import { updates } from "@/content/updates";
@@ -59,7 +58,6 @@ export default function Home() {
         <Updates />
         <Faq />
         <Contact />
-        <Team />
       </main>
       <Footer />
     </>

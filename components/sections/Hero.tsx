@@ -3,7 +3,7 @@
 /**
  * Full-viewport hero. The global particle constellation runs behind the
  * whole page (see Chrome); the hero layers a hairline grid + scanline on
- * top and carries: a real, typeable terminal (gen-shell), the glitching
+ * top and carries: the live current-status board, the glitching
  * letter-interactive GENESIS wordmark, GEN-0 the robot, the phase-aware
  * CTA + countdown, and the count-up stat strip. Hydration-safe throughout.
  */
@@ -13,7 +13,7 @@ import { event, eventDates, heroByPhase } from "@/content/event";
 import type { PhaseId } from "@/lib/phase";
 import { useLivePhase } from "@/components/ui/useLivePhase";
 import { Countdown } from "@/components/ui/Countdown";
-import { Terminal } from "@/components/ui/Terminal";
+import { StatusBoard } from "@/components/ui/StatusBoard";
 import { GlitchTitle } from "@/components/ui/GlitchTitle";
 import { Typewriter } from "@/components/ui/Typewriter";
 import { CountUp } from "@/components/ui/CountUp";
@@ -120,9 +120,9 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
             )}
           </div>
 
-          {/* Right: the working terminal + GEN-0 */}
+          {/* Right: the live status board + GEN-0 */}
           <div className="flex min-w-0 flex-col items-center gap-4">
-            <Terminal phase={phase} />
+            <StatusBoard phase={phase} />
             <div className="hidden lg:block">
               <Bot />
             </div>

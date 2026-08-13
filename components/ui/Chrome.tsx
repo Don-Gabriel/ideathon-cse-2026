@@ -7,7 +7,7 @@
  *    expands over interactive elements
  *  - bottom-right HUD (lg+): live IST clock · phase readout · back-to-top
  *  - vertical side rails filling wide-screen gutters (xl+)
- *  - matrix-rain overlay, triggered by the terminal `matrix` command or
+ *  - matrix-rain overlay, triggered by a `genesis:matrix` event or
  *    the Konami code
  * Everything transform/opacity only; all of it sits out of the way of
  * screen readers and reduced-motion users.
@@ -189,7 +189,7 @@ function MatrixRain() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [on, setOn] = useState(false);
 
-  // Triggers: terminal event + Konami code
+  // Triggers: the Konami code, or anything dispatching `genesis:matrix`
   useEffect(() => {
     let progress = 0;
     const onEvent = () => setOn(true);

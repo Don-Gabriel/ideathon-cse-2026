@@ -122,7 +122,7 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
 
           {/* Right: the working terminal + GEN-0 */}
           <div className="flex min-w-0 flex-col items-center gap-4">
-            <Terminal />
+            <Terminal phase={phase} />
             <div className="hidden lg:block">
               <Bot />
             </div>

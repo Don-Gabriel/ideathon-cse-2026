@@ -6,10 +6,15 @@
  * prizes, rules, venue, contact, register, whoami, ls, git,
  * bot, matrix, clear… On touch screens a row of quick-command chips
  * replaces typing. Facts are pulled from /content config, never invented.
+ *
+ * `register` is gated on the live phase using the same rule as the nav and
+ * the hero CTA, so the terminal can never hand out the form link while the
+ * rest of the page says registration isn't open.
  */
 
 import { useEffect, useRef, useState } from "react";
-import { event } from "@/content/event";
+import { event, heroByPhase } from "@/content/event";
+import type { PhaseId } from "@/lib/phase";
 
 interface Line {
   text: string;
@@ -26,7 +31,7 @@ const BOOT: Line[] = [
 
 const CHIPS = ["help", "dates", "prizes", "rules", "register"];
 
-function run(cmd: string): Line[] {
+function run(cmd: string, canRegister: boolean): Line[] {
   const c = cmd.trim().toLowerCase();
   if (!c) return [];
   if (c === "help")
@@ -54,12 +59,16 @@ function run(cmd: string): Line[] {
     return event.channels.map((ch) => ({
       text: `${ch.label.toLowerCase()} .... ${ch.value}`,
     }));
-  if (c === "register")
-    return event.registrationUrl
-      ? [{ text: "opening registration form …", tone: "ok" }]
-      : [
-          { text: "form link publishes before 17 aug — watch Updates.", tone: "err" },
-        ];
+  if (c === "register") {
+    if (!event.registrationUrl)
+      return [
+        { text: "form link publishes before registration opens — watch Updates.", tone: "err" },
+      ];
+    if (canRegister) return [{ text: "opening registration form …", tone: "ok" }];
+    return [
+      { text: "registration is not open. run `dates`.", tone: "err" },
+    ];
+  }
   if (c === "whoami") return [{ text: "guest@genesis — future finalist" }];
   if (c === "ls") return [{ text: "ideas/  teams/  prizes/  finale/" }];
   if (c === "bot" || c === "gen0" || c === "gen-0")
@@ -76,7 +85,11 @@ function run(cmd: string): Line[] {
   return [{ text: `command not found: ${c} — try 'help'`, tone: "err" }];
 }
 
-export function Terminal() {
+export function Terminal({ phase }: { phase: PhaseId }) {
+  // Same rule the nav and hero CTA use — one definition of "open".
+  const hero = heroByPhase[phase];
+  const canRegister = !hero.ctaDisabled && hero.ctaAction === "register";
+
   const [booted, setBooted] = useState(true); // SSR: full boot log visible
   const [bootCount, setBootCount] = useState(BOOT.length);
   const [lines, setLines] = useState<Line[]>([]);
@@ -129,12 +142,12 @@ export function Terminal() {
     setLines((prev) => [
       ...prev.slice(-40),
       { text: `$ ${c}`, tone: "in" as const },
-      ...run(c),
+      ...run(c, canRegister),
     ]);
     if (c === "matrix") {
       window.dispatchEvent(new CustomEvent("genesis:matrix"));
     }
-    if (c === "register" && event.registrationUrl) {
+    if (c === "register" && canRegister && event.registrationUrl) {
       window.open(event.registrationUrl, "_blank", "noopener,noreferrer");
     }
   };

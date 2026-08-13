@@ -1,6 +1,7 @@
 /**
- * How it works: the three participant-facing stages as pipeline cards.
- * Content is drawn from content/timeline.ts.
+ * How it works: every pipeline stage as a card, in order.
+ * Content is drawn from content/timeline.ts — show all of them, so the step
+ * numbers here always match the Timeline section with no gaps.
  */
 
 import { ArrowRight } from "lucide-react";
@@ -10,21 +11,17 @@ import { GlowCard } from "@/components/ui/GlowCard";
 import { Tilt } from "@/components/ui/Tilt";
 import { timelineStages } from "@/content/timeline";
 
-const STAGE_IDS = ["submit", "screening", "finale"] as const;
-
 export function HowItWorks() {
-  const stages = STAGE_IDS.map(
-    (id) => timelineStages.find((s) => s.id === id)!
-  ).filter(Boolean);
+  const stages = timelineStages;
 
   return (
     <Section
       id="how-it-works"
       eyebrow="02 · pipeline"
       title="How it works"
-      lead="Three stages. You act in the first and the last; the middle one happens to your submission."
+      lead="Four stages. You act in the first and the last; the two in between happen to your submission."
     >
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stages.map((s, i) => (
           <Reveal key={s.id} delay={i * 0.08} className="relative">
             <Tilt className="h-full">
@@ -39,11 +36,12 @@ export function HowItWorks() {
               <p className="mt-3 flex-1 text-sm text-muted">{s.description}</p>
             </GlowCard>
             </Tilt>
+            {/* Connectors only in the single-row layout, where they line up. */}
             {i < stages.length - 1 && (
               <ArrowRight
                 size={18}
                 aria-hidden="true"
-                className="absolute -right-[19px] top-1/2 z-10 hidden -translate-y-1/2 text-phosphor md:block"
+                className="absolute -right-[19px] top-1/2 z-10 hidden -translate-y-1/2 text-phosphor lg:block"
               />
             )}
           </Reveal>

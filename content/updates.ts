@@ -23,8 +23,14 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    date: "2026-08-13",
+    title: "Rule book published · registration opens Monday 17 August",
+    body: "The official rule book is now linked on this page. Registration opens Monday 17 August and closes Thursday 3 September, 11:59 PM. Cash prizes will be awarded to the winning teams. The shortlist and grand finale dates will be announced here once fixed.",
+    tag: "RULEBOOK",
+  },
+  {
     date: "2026-08-06",
     title: "GENESIS Ideathon 1.0 is live",
-    body: "Registration opens Tuesday 11 August and closes Tuesday 25 August, 11:59 PM. Everything you need — rules, rubric, submission format — is on this page. The rulebook PDF and slide template will be linked here before registration opens.",
+    body: "Everything you need — rules, eligibility, submission format — is on this page. Registration details and the rule book follow shortly.",
   },
 ];

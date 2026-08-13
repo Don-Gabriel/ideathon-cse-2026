@@ -101,7 +101,7 @@ export default async function OgImage() {
           }}
         >
           <span>Dept of CSE · Government College of Engineering, Tirunelveli</span>
-          <span style={{ color: "#FFB020" }}>4 SEP 2026</span>
+          <span style={{ color: "#FFB020" }}>REG 17 AUG – 3 SEP 2026</span>
         </div>
       </div>
     ),

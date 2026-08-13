@@ -51,14 +51,20 @@ export const metadata: Metadata = {
   },
 };
 
-/** schema.org Event structured data, derived from config. */
+/**
+ * schema.org Event structured data, derived from config.
+ * The finale dates are optional here: until they are announced we emit the
+ * registration window instead of inventing a start date.
+ */
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
   name: `${event.name} — ${event.subtitle}`,
   description: event.description,
-  startDate: eventDates.finaleStart,
-  endDate: eventDates.finaleEnd,
+  ...(eventDates.finaleStart
+    ? { startDate: eventDates.finaleStart }
+    : { startDate: eventDates.regOpen }),
+  ...(eventDates.finaleEnd ? { endDate: eventDates.finaleEnd } : {}),
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   eventStatus: "https://schema.org/EventScheduled",
   isAccessibleForFree: true,

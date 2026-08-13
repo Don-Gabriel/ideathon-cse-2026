@@ -32,11 +32,15 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "Can I team up with friends from another department?",
-        a: "Yes. Any mix of departments and years works — cross-department teams are encouraged, but nothing is mandatory.",
+        a: "Yes. Any mix of departments and years works — cross-department teams are encouraged, but nothing is mandatory. GENESIS is intra-college, so every member must be a student of GCE Tirunelveli.",
+      },
+      {
+        q: "Can I be in more than one team?",
+        a: "No. A student may join only one team. Duplicate names may cancel every registration containing them, so check with your friends before the team lead submits.",
       },
       {
         q: "Do I need to know how to code?",
-        a: "No. GENESIS judges ideas, not code. The rubric scores problem clarity, originality, feasibility, impact and presentation — a sharp idea from any discipline beats a weak one with an app attached.",
+        a: "No. GENESIS judges ideas, not code. The panel looks at problem clarity, originality, feasibility, impact and how you present it — a sharp idea from any discipline beats a weak one with an app attached.",
       },
       {
         q: "I'm a first-year. Am I eligible?",
@@ -51,6 +55,10 @@ export const faqGroups: FaqGroup[] = [
       {
         q: "Do we need a working prototype?",
         a: "No. Stage 1 is an idea submission on the given template. A sketch or mock-up can help you explain, but nothing needs to be built.",
+      },
+      {
+        q: "Where is the idea template?",
+        a: "Inside the Google Form itself. Fill it in and submit it as a PDF named TeamName_Genesis_Round1 — only the last submission before the deadline counts.",
       },
       {
         q: "What if our idea already exists somewhere?",
@@ -85,17 +93,15 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "What happens if a member drops out after shortlisting?",
-        // TODO: confirm policy.
-        a: "Tell a coordinator immediately. The rest of the team pitches as planned — a smaller team on stage is fine.",
+        a: "Tell a coordinator immediately. Team composition is frozen when registration closes, so fewer members may present — but nobody who wasn't registered can take their place.",
       },
       {
         q: "How long is the pitch?",
-        a: "8 minutes to pitch, followed by 4 minutes of Q&A from the panel. Timekeeping is strict so every team gets the same stage.",
+        a: "10 minutes per team, with a maximum of 10 slides including the first and last. Timekeeping is strict so every team gets the same stage.",
       },
       {
         q: "What should we bring on finale day?",
-        // TODO: confirm policy.
-        a: "Your college ID cards and your slides. Presentation equipment is provided at the venue; exact reporting time and any extras will be posted in Updates before the day.",
+        a: "A valid college ID card for every member, and your deck named TeamName_Genesis_Finale. Report 30 minutes before the announced start — every member signs in personally.",
       },
     ],
   },
@@ -108,8 +114,16 @@ export const faqGroups: FaqGroup[] = [
         a: "No. Registration is free — there is no entry fee at any stage.",
       },
       {
+        q: "What are the prizes?",
+        a: "Cash prizes will be awarded to the winning teams at the grand finale. The amounts are announced through the official channels — watch the Updates section on this page.",
+      },
+      {
+        q: "When is the finale?",
+        a: "The date is being finalised. Registration runs from Monday 17 August to Thursday 3 September; the shortlist and finale dates are announced in Updates once fixed.",
+      },
+      {
         q: "Will I get a certificate?",
-        a: "All finalists receive participation certificates, every member of the top 20 teams receives a finalist certificate, and winning teams receive merit certificates and trophies.",
+        a: "Certificates go to the top three teams, presented at the grand finale.",
       },
       {
         q: "Where do official announcements happen?",

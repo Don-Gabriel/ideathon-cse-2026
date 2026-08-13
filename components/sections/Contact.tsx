@@ -67,7 +67,7 @@ export function Contact() {
                 </span>
                 <span>
                   <span className="eyebrow block">
-                    {CHANNEL_HINT[ch.type]}
+                    {ch.role ?? CHANNEL_HINT[ch.type]}
                   </span>
                   <span className="mt-1 block font-display font-semibold text-fg">
                     {ch.label}

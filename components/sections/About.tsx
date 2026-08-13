@@ -24,7 +24,7 @@ export function About() {
             solving and a clear idea for solving it; nothing needs to be
             built. Submit your case on the given template, a blind faculty
             panel screens every entry, and the strongest twenty teams defend
-            theirs on stage on 4 September.
+            theirs on stage at the grand finale.
           </p>
         </Reveal>
 

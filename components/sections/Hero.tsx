@@ -10,7 +10,6 @@
 
 import { ArrowRight } from "lucide-react";
 import { event, eventDates, heroByPhase } from "@/content/event";
-import { prizePool } from "@/content/prizes";
 import type { PhaseId } from "@/lib/phase";
 import { useLivePhase } from "@/components/ui/useLivePhase";
 import { Countdown } from "@/components/ui/Countdown";
@@ -19,7 +18,6 @@ import { GlitchTitle } from "@/components/ui/GlitchTitle";
 import { Typewriter } from "@/components/ui/Typewriter";
 import { CountUp } from "@/components/ui/CountUp";
 import { Bot } from "@/components/ui/Bot";
-import { formatINR } from "@/lib/format";
 
 export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
   const { phase } = useLivePhase(buildPhase);
@@ -69,7 +67,7 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
             </p>
 
             <p className="eyebrow mt-4">
-              <span className="text-phosphor">fri 4 sep 2026</span>
+              <span className="text-phosphor">finale date to be announced</span>
               <span className="mx-2 text-line">·</span>
               sss block, dept of cse
               <span className="mx-2 text-line">·</span>
@@ -99,7 +97,10 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
                 </a>
               )}
               <a
-                href="#rubric"
+                href={event.assets.rulebookPdf || "#submission"}
+                {...(event.assets.rulebookPdf
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="inline-flex items-center gap-2 rounded-sm border border-line bg-void/40 px-5 py-3 font-mono text-[0.8rem] uppercase tracking-[0.12em] text-fg backdrop-blur-[2px] transition-colors hover:border-muted"
               >
                 Read the rulebook
@@ -143,10 +144,10 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
             <dt className="eyebrow mt-1">finalist teams</dt>
           </div>
           <div className="bg-panel/80 px-4 py-3.5 text-center backdrop-blur-[2px]">
-            <dd className="font-mono tabular text-xl font-medium text-phosphor">
-              <CountUp to={prizePool} format={formatINR} />
+            <dd className="font-mono text-xl font-medium uppercase text-phosphor">
+              Cash
             </dd>
-            <dt className="eyebrow mt-1">prize pool</dt>
+            <dt className="eyebrow mt-1">prizes</dt>
           </div>
           <div className="bg-panel/80 px-4 py-3.5 text-center backdrop-blur-[2px]">
             <dd className="font-mono tabular text-xl font-medium text-phosphor">

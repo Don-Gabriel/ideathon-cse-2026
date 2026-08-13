@@ -1,83 +1,31 @@
 /**
  * content/prizes.ts
  *
- * Prize tiers and certificate facts.
- * TODO: confirm prize amounts before launch — the numbers below are
- * PLACEHOLDERS supplied for layout purposes and are NOT final.
+ * Prizes. Deliberately minimal: the site states that cash prizes will be
+ * awarded and nothing else — no amounts, no tiers, no award categories.
+ * The rule book says prizes "will be announced through the official
+ * channels", so this page must not get ahead of that.
  *
- * Drives: Prizes section, and the "₹ prize pool" stat in About
- * (the pool is summed from `amount` values here — change a number and
- * the stat updates itself).
+ * When the committee fixes the amounts, announce them in
+ * `content/updates.ts` first, then (if wanted) expand this file.
+ *
+ * Drives: Prizes section, the "prizes" line in the hero stat strip,
+ * the ticker and the terminal's `prizes` command.
  */
 
-export interface PrizeTier {
-  id: string;
-  title: string;
-  /** Rupee amount, no formatting — the UI formats it. */
-  amount: number;
-  /** "main" tiers render as the podium; "special" as award cards. */
-  kind: "main" | "special";
-  /** 1 = winner (most prominent), 2, 3 for podium order. */
-  rank?: number;
-  detail: string;
-}
+export const prizeStatement = {
+  headline: "Cash prizes will be awarded.",
+  body: "Cash prizes go to the winning teams at the grand finale. Amounts are announced through the official channels — watch Updates on this page.",
+};
 
-export const prizeTiers: PrizeTier[] = [
-  {
-    id: "winner",
-    title: "Winner",
-    amount: 15000,
-    kind: "main",
-    rank: 1,
-    detail: "Cash prize, trophy and merit certificates for all five members.",
-  },
-  {
-    id: "runner-up",
-    title: "Runner-up",
-    amount: 10000,
-    kind: "main",
-    rank: 2,
-    detail: "Cash prize, trophy and merit certificates for all five members.",
-  },
-  {
-    id: "second-runner-up",
-    title: "Second runner-up",
-    amount: 5000,
-    kind: "main",
-    rank: 3,
-    detail: "Cash prize, trophy and merit certificates for all five members.",
-  },
-  {
-    id: "all-women",
-    title: "Best all-women team",
-    amount: 3000,
-    kind: "special",
-    detail: "For the highest-scoring team with five women members.",
-  },
-  {
-    id: "most-innovative",
-    title: "Most innovative idea",
-    amount: 3000,
-    kind: "special",
-    detail: "Picked by the panel for originality, independent of final rank.",
-  },
-];
-
-/** Certificate facts, shown under the prize tiers. */
+/**
+ * Certificates. Only the top three teams receive them — don't widen this
+ * to "all finalists" or "all participants" without the committee's word.
+ */
 export const certificates = [
   {
-    title: "Merit certificates & trophies",
-    detail: "For winning teams, presented at the finale.",
-  },
-  {
-    title: "Finalist certificates",
-    detail: "For every member of the top 20 teams.",
-  },
-  {
-    title: "Participation certificates",
-    detail: "For every finalist on stage day.",
+    title: "Certificates for the top 3",
+    detail:
+      "The three winning teams receive certificates, presented at the grand finale.",
   },
 ];
-
-/** Total pool, derived — never hardcode this anywhere. */
-export const prizePool = prizeTiers.reduce((sum, t) => sum + t.amount, 0);

@@ -14,7 +14,7 @@ const QUIPS = [
   "beep. ideas compile faster than code.",
   "scanning for teams[≤5]…",
   "any department. even mine.",
-  "the rubric is public. i checked.",
+  "the rule book is one page. read it.",
   "entry fee: ₹0. verified.",
   "bring a problem worth solving.",
 ];

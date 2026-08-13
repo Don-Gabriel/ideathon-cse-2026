@@ -87,15 +87,26 @@ export function Nav({ buildPhase }: { buildPhase: PhaseId }) {
           </ul>
 
           <div className="flex items-center gap-3">
-            <a
-              href={registerHref}
-              {...(event.registrationUrl
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="hidden rounded-sm bg-phosphor px-4 py-2 font-mono text-[0.78rem] font-medium uppercase tracking-[0.12em] text-void transition-opacity hover:opacity-85 md:block"
-            >
-              Register
-            </a>
+            {/* Only a live link while the window is actually open — otherwise
+                the nav would invite registration the hero says isn't open. */}
+            {registerLive ? (
+              <a
+                href={registerHref}
+                {...(event.registrationUrl
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="hidden rounded-sm bg-phosphor px-4 py-2 font-mono text-[0.78rem] font-medium uppercase tracking-[0.12em] text-void transition-opacity hover:opacity-85 md:block"
+              >
+                Register
+              </a>
+            ) : (
+              <a
+                href="#timeline"
+                className="hidden rounded-sm border border-line bg-panel px-4 py-2 font-mono text-[0.78rem] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:border-muted md:block"
+              >
+                {phase === "BEFORE_OPEN" ? "Opens soon" : "Registration closed"}
+              </a>
+            )}
             <button
               type="button"
               aria-label="Open menu"
@@ -143,16 +154,26 @@ export function Nav({ buildPhase }: { buildPhase: PhaseId }) {
             ))}
           </ul>
           <div className="px-8 pb-24">
-            <a
-              href={registerHref}
-              {...(event.registrationUrl
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              onClick={() => setOpen(false)}
-              className="block rounded-sm bg-phosphor px-5 py-3.5 text-center font-mono text-sm font-medium uppercase tracking-[0.12em] text-void"
-            >
-              Register your team
-            </a>
+            {registerLive ? (
+              <a
+                href={registerHref}
+                {...(event.registrationUrl
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                onClick={() => setOpen(false)}
+                className="block rounded-sm bg-phosphor px-5 py-3.5 text-center font-mono text-sm font-medium uppercase tracking-[0.12em] text-void"
+              >
+                Register your team
+              </a>
+            ) : (
+              <a
+                href="#timeline"
+                onClick={() => setOpen(false)}
+                className="block rounded-sm border border-line bg-panel px-5 py-3.5 text-center font-mono text-sm font-medium uppercase tracking-[0.12em] text-muted"
+              >
+                {hero.ctaLabel}
+              </a>
+            )}
           </div>
         </div>
       )}

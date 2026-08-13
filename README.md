@@ -14,7 +14,7 @@ folder. You edit one file, save, publish, done.
 ## The one idea to understand
 
 The site reads **today's date** and works out for itself what to show:
-before 11 Aug it says "registration opens in…", during registration it shows
+before 17 Aug it says "registration opens in…", during registration it shows
 a live countdown to the deadline, in the final 48 hours it switches to an
 urgent red state, after the deadline it says screening is in progress, and
 so on through the finale. **You never have to update the site just because
@@ -28,11 +28,10 @@ a date passed.** You only edit it when a *fact* changes.
 | Timeline stage descriptions | `content/timeline.ts` |
 | Post an announcement | `content/updates.ts` |
 | Add/edit an FAQ | `content/faqs.ts` |
-| Prize amounts | `content/prizes.ts` |
-| Evaluation rubric | `content/rubric.ts` |
+| Prize wording (no amounts are published) | `content/prizes.ts` |
 | Eligibility (the one rule: max team size 5) | `content/rules.ts` |
-| Submission note (template-only mandate) | `content/guidelines.ts` |
-| Faculty & student team names | `content/team.ts` |
+| Submission rules, "what counts", blind-evaluation note | `content/guidelines.ts` |
+| Student office bearers | `content/team.ts` |
 
 Each file starts with a comment explaining exactly what it drives.
 
@@ -41,15 +40,28 @@ Each file starts with a comment explaining exactly what it drives.
 Search the `content/` folder for the word `TODO`. Every one marks something
 only the committee can supply. Right now that is:
 
-1. **The Google Form URL** — `registrationUrl` in `content/event.ts`.
-2. **Coordinator names and phone numbers** — `channels` in `content/event.ts`.
-3. **The deployed site URL** — `siteUrl` in `content/event.ts` (fill in
+1. **The shortlist and grand finale dates** — `shortlistAnnounce`,
+   `finaleStart` and `finaleEnd` in `content/event.ts`, plus the matching
+   `dateLabel` / `start` / `end` in `content/timeline.ts`. They are empty on
+   purpose: while empty the site says "to be announced" everywhere instead
+   of guessing. Fill them in and the countdowns, timeline and hero all
+   start working by themselves.
+2. **The deployed site URL** — `siteUrl` in `content/event.ts` (fill in
    after the first deploy; it powers link previews and search listings).
-4. **Prize amounts** — `content/prizes.ts` (current numbers are placeholders).
-5. **Faculty and student names** — `content/team.ts` (every "To be announced").
-6. **Rulebook PDF and slide template links** — `assets` in `content/event.ts`
-   (until filled, the download buttons say "publishes before registration opens").
-7. **Policy answers marked `TODO: confirm`** in `content/faqs.ts`.
+3. **The idea/slide template link** — `assets.pptTemplate` in
+   `content/event.ts`. Until it is filled, that download button says
+   "publishes before registration opens". (The Round 1 template is also
+   provided inside the Google Form itself, per the rule book.)
+4. **Prize amounts, when decided** — announce them in `content/updates.ts`.
+   The Prizes section deliberately publishes no numbers.
+
+Already filled in: the Google Form URL, the rule book link, and the four
+student office bearers' names and numbers.
+
+**Deliberately not on the site — do not add these back without the
+committee saying so:** any scoring rubric or marks breakdown (the rule book
+says marks are confidential), faculty patron names, and certificates for
+anyone beyond the top three teams.
 
 ## How to post an update during the event
 

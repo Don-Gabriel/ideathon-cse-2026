@@ -37,8 +37,14 @@ export function parseDate(iso: string | undefined | null): Date | null {
 
 /**
  * Derive the single event phase for a given moment.
- * If any configured date is missing or malformed, returns "UNKNOWN" and the
- * UI stops making time-based claims instead of making wrong ones.
+ *
+ * The registration window is the only part that must be configured: without
+ * a valid regOpen/regClose the engine returns "UNKNOWN" and the UI stops
+ * making time-based claims instead of making wrong ones.
+ *
+ * The later dates (shortlist, finale) are allowed to be unannounced — an
+ * empty or malformed value simply means the site never advances past the
+ * preceding phase, which is exactly the truth: it is not announced yet.
  */
 export function derivePhase(now: Date, dates: EventDates = eventDates): PhaseId {
   const regOpen = parseDate(dates.regOpen);
@@ -47,9 +53,7 @@ export function derivePhase(now: Date, dates: EventDates = eventDates): PhaseId 
   const finaleStart = parseDate(dates.finaleStart);
   const finaleEnd = parseDate(dates.finaleEnd);
 
-  if (!regOpen || !regClose || !shortlist || !finaleStart || !finaleEnd) {
-    return "UNKNOWN";
-  }
+  if (!regOpen || !regClose) return "UNKNOWN";
 
   const t = now.getTime();
   if (t < regOpen.getTime()) return "BEFORE_OPEN";
@@ -58,9 +62,9 @@ export function derivePhase(now: Date, dates: EventDates = eventDates): PhaseId 
       ? "REG_CLOSING_SOON"
       : "REG_OPEN";
   }
-  if (t < shortlist.getTime()) return "REG_CLOSED";
-  if (t < finaleStart.getTime()) return "SHORTLIST_OUT";
-  if (t <= finaleEnd.getTime()) return "FINALE_DAY";
+  if (!shortlist || t < shortlist.getTime()) return "REG_CLOSED";
+  if (!finaleStart || t < finaleStart.getTime()) return "SHORTLIST_OUT";
+  if (!finaleEnd || t <= finaleEnd.getTime()) return "FINALE_DAY";
   return "COMPLETE";
 }
 

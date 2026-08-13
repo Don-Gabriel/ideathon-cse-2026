@@ -15,9 +15,14 @@ export interface EventDates {
   /** ISO strings with the +05:30 (IST) offset written in — keep the offset. */
   regOpen: string;
   regClose: string;
-  shortlistAnnounce: string;
-  finaleStart: string;
-  finaleEnd: string;
+  /**
+   * Not yet announced. Leave as "" until the committee fixes the date; the
+   * phase engine and the timeline both handle an empty value by simply not
+   * making a claim about it. Fill it in and everything updates itself.
+   */
+  shortlistAnnounce?: string;
+  finaleStart?: string;
+  finaleEnd?: string;
 }
 
 export type ChannelType = "phone" | "whatsapp" | "email" | "instagram";
@@ -30,6 +35,8 @@ export interface ContactChannel {
   value: string;
   /** What tapping the card does: tel:, https://wa.me/, mailto:, https://instagram.com/… */
   href: string;
+  /** Optional office/designation shown above the name, e.g. "President · IV year". */
+  role?: string;
   /** Optional availability line, e.g. "9 AM – 9 PM, Mon–Sat". */
   hours?: string;
 }
@@ -51,11 +58,13 @@ export interface HeroCopy {
 }
 
 export const eventDates: EventDates = {
-  regOpen: "2026-08-11T00:00:00+05:30",
-  regClose: "2026-08-25T23:59:59+05:30",
-  shortlistAnnounce: "2026-08-29T00:00:00+05:30",
-  finaleStart: "2026-09-04T00:00:00+05:30",
-  finaleEnd: "2026-09-04T23:59:59+05:30",
+  regOpen: "2026-08-17T00:00:00+05:30",
+  regClose: "2026-09-03T23:59:59+05:30",
+  // TODO: fill in once announced. Empty = the site says "to be announced"
+  // instead of guessing.
+  shortlistAnnounce: "",
+  finaleStart: "",
+  finaleEnd: "",
 };
 
 export const event = {
@@ -66,10 +75,11 @@ export const event = {
   presenterShort: "GCE Tirunelveli",
   tagline: "One idea. Up to five people. Any department.",
   description:
-    "GENESIS is a first-edition intra-college ideathon by the Department of CSE, GCE Tirunelveli. Teams of up to five submit one idea; the top 20 pitch on campus on 4 September 2026.",
+    "GENESIS is a first-edition intra-college ideathon by the Department of CSE, GCE Tirunelveli. Teams of up to five submit one idea; the top 20 pitch on campus at the grand finale.",
 
-  // TODO: replace with the real Google Form URL before launch.
-  registrationUrl: "",
+  // Official registration form, as published in the rule book.
+  registrationUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSeliUkJcBwVmidSKTtvyZghjyRMEv9B2bwxKE6tvEz-nMUCog/viewform",
 
   // Default Vercel URL for the ideathon-cse-2026 project.
   // TODO: confirm after the first deploy (or replace with a custom domain).
@@ -85,14 +95,15 @@ export const event = {
   },
 
   assets: {
-    // TODO: add the rulebook PDF URL when it is published. Empty string
-    // renders the download button in a "not yet published" state.
-    rulebookPdf: "",
-    // TODO: add the 6-slide PPT template URL when it is published.
+    // Official rule book (Google Drive).
+    rulebookPdf:
+      "https://drive.google.com/file/d/1WZwQ-FQWxq1WV6JcISF4WHmA3SRlt2x5/view?usp=sharing",
+    // TODO: add the template URL when it is published. Empty string renders
+    // the download button in a "not yet published" state.
     pptTemplate: "",
     rulebookVersion: "v1.0",
     // TODO: bump whenever the rulebook changes.
-    rulebookUpdated: "2026-08-06",
+    rulebookUpdated: "2026-08-13",
   },
 
   /**
@@ -101,19 +112,36 @@ export const event = {
    * Add a channel here and it appears on the site — nothing else to touch.
    */
   channels: [
-    // TODO: replace with real coordinator names and numbers.
     {
       type: "phone",
-      label: "Coordinator One",
-      value: "+91 XXXXX XXXXX",
-      href: "tel:+91XXXXXXXXXX",
+      label: "Santhosh G",
+      role: "President · IV year",
+      value: "+91 94894 81520",
+      href: "tel:+919489481520",
       hours: "9 AM – 9 PM",
     },
     {
       type: "phone",
-      label: "Coordinator Two",
-      value: "+91 XXXXX XXXXX",
-      href: "tel:+91XXXXXXXXXX",
+      label: "J Don Gabriel",
+      role: "Vice President · III year",
+      value: "+91 73052 91124",
+      href: "tel:+917305291124",
+      hours: "9 AM – 9 PM",
+    },
+    {
+      type: "phone",
+      label: "Divya J",
+      role: "Secretary · IV year",
+      value: "+91 80122 60400",
+      href: "tel:+918012260400",
+      hours: "9 AM – 9 PM",
+    },
+    {
+      type: "phone",
+      label: "Vijayalakshmii G",
+      role: "Joint Secretary · III year",
+      value: "+91 63694 01241",
+      href: "tel:+916369401241",
       hours: "9 AM – 9 PM",
     },
   ] satisfies ContactChannel[],
@@ -121,7 +149,7 @@ export const event = {
   supportPromise: {
     headline: "Every query answered within 12 hours. Guaranteed within 24.",
     detail:
-      "Call or message either coordinator. Questions asked between 9 AM and 9 PM usually get an answer the same evening; anything later is first thing next morning. Answers that matter to everyone get posted in Updates too.",
+      "Call or message any of the office bearers below. Questions asked between 9 AM and 9 PM usually get an answer the same evening; anything later is first thing next morning. Answers that matter to everyone get posted in Updates too.",
   },
 
   /**
@@ -147,7 +175,7 @@ export const navLinks = [
 export const heroByPhase: Record<PhaseId, HeroCopy> = {
   BEFORE_OPEN: {
     status: "status: registration queued",
-    ctaLabel: "Registration opens Tue 11 Aug",
+    ctaLabel: "Registration opens Mon 17 Aug",
     ctaAction: "none",
     ctaDisabled: true,
     helper: "Get your team ready. The form goes live at midnight.",
@@ -159,7 +187,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaLabel: "Register your team",
     ctaAction: "register",
     ctaDisabled: false,
-    helper: "Closes Tuesday 25 August, 11:59 PM IST.",
+    helper: "Closes Thursday 3 September, 11:59 PM IST.",
     countdownTo: "regClose",
     countdownLabel: "Registration closes in",
   },
@@ -169,7 +197,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "register",
     ctaDisabled: false,
     ctaDanger: true,
-    helper: "Final window. The form closes Tuesday 25 August, 11:59 PM IST.",
+    helper: "Final window. The form closes Thursday 3 September, 11:59 PM IST.",
     countdownTo: "regClose",
     countdownLabel: "Registration closes in",
   },
@@ -179,14 +207,15 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "none",
     ctaDisabled: true,
     helper:
-      "Submissions are with the evaluators. Shortlist announced Saturday 29 August.",
+      "Submissions are with the evaluators. The shortlist date will be announced in Updates.",
   },
   SHORTLIST_OUT: {
     status: "status: shortlist published",
     ctaLabel: "View shortlisted teams",
     ctaAction: "updates",
     ctaDisabled: false,
-    helper: "The top 20 teams are through to the finale on Friday 4 September.",
+    helper:
+      "The top 20 teams are through to the finale. The finale date will be announced in Updates.",
   },
   FINALE_DAY: {
     status: "status: live today",

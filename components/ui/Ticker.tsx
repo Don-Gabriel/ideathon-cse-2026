@@ -5,17 +5,15 @@
  */
 
 import { event } from "@/content/event";
-import { prizePool } from "@/content/prizes";
-import { formatINR } from "@/lib/format";
 
 const FACTS = [
   "open innovation — any domain",
   "teams of up to 5",
-  `${formatINR(prizePool)} prize pool`,
+  "cash prizes for the winners",
   "entry fee ₹0",
   "blind evaluation",
   "top 20 pitch live",
-  "finale 4 sep — sss block",
+  "finale — sss block, dept of cse",
   event.presenterShort.toLowerCase(),
 ];
 

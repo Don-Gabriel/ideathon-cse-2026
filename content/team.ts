@@ -1,12 +1,13 @@
 /**
  * content/team.ts
  *
- * Organising team — faculty patrons first, then the student core team.
- * Cards render a monogram from the name when no photo is given; add
- * `photo: "/team/name.jpg"` (file in /public/team) to show a photo instead.
+ * Organising team. Cards render a monogram from the name when no photo is
+ * given; add `photo: "/team/name.jpg"` (file in /public/team) to show a
+ * photo instead.
  *
- * TODO: replace every "To be announced" with the real name before launch.
- * The UI is final — filling names is a one-line edit per person.
+ * Student office bearers only — faculty patrons are deliberately not
+ * listed. Only real, confirmed names belong here; never re-add "To be
+ * announced" placeholder cards.
  *
  * Drives: Organising team section.
  */
@@ -27,26 +28,13 @@ export interface TeamGroup {
 
 export const teamGroups: TeamGroup[] = [
   {
-    id: "faculty",
-    label: "Faculty patrons",
-    members: [
-      // TODO: add real names.
-      { name: "To be announced", role: "Head of Department, CSE" },
-      { name: "To be announced", role: "Faculty coordinator" },
-      { name: "To be announced", role: "Faculty coordinator" },
-    ],
-  },
-  {
     id: "students",
-    label: "Student core team",
+    label: "Student office bearers",
     members: [
-      // TODO: add real names.
-      { name: "To be announced", role: "Overall coordinator" },
-      { name: "To be announced", role: "Overall coordinator" },
-      { name: "To be announced", role: "Registrations & Q&A desk" },
-      { name: "To be announced", role: "Evaluation desk" },
-      { name: "To be announced", role: "Event-day operations" },
-      { name: "To be announced", role: "Design & outreach" },
+      { name: "Santhosh G", role: "President · IV year" },
+      { name: "J Don Gabriel", role: "Vice President · III year" },
+      { name: "Divya J", role: "Secretary · IV year" },
+      { name: "Vijayalakshmii G", role: "Joint Secretary · III year" },
     ],
   },
 ];

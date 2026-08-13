@@ -3,16 +3,13 @@
 /**
  * The hero terminal — actually usable. Boots with a short compile log
  * (skippable via Escape or click), then accepts commands: help, dates,
- * prizes, rules, rubric, venue, contact, register, whoami, ls, git,
+ * prizes, rules, venue, contact, register, whoami, ls, git,
  * bot, matrix, clear… On touch screens a row of quick-command chips
  * replaces typing. Facts are pulled from /content config, never invented.
  */
 
 import { useEffect, useRef, useState } from "react";
 import { event } from "@/content/event";
-import { prizeTiers, prizePool } from "@/content/prizes";
-import { rubric } from "@/content/rubric";
-import { formatINR } from "@/lib/format";
 
 interface Line {
   text: string;
@@ -34,27 +31,23 @@ function run(cmd: string): Line[] {
   if (!c) return [];
   if (c === "help")
     return [
-      { text: "commands: dates · prizes · rules · rubric · venue · contact" },
+      { text: "commands: dates · prizes · rules · venue · contact" },
       { text: "          register · whoami · ls · bot · matrix · clear" },
     ];
   if (c === "dates")
     return [
-      { text: "reg opens ..... tue 11 aug 2026, 00:00" },
-      { text: "reg closes .... tue 25 aug 2026, 23:59" },
-      { text: "shortlist ..... sat 29 aug 2026" },
-      { text: "finale ........ fri 04 sep 2026", tone: "ok" },
+      { text: "reg opens ..... mon 17 aug 2026, 00:00" },
+      { text: "reg closes .... thu 03 sep 2026, 23:59", tone: "ok" },
+      { text: "shortlist ..... to be announced" },
+      { text: "finale ........ to be announced" },
     ];
   if (c === "prizes")
     return [
-      { text: `pool ${formatINR(prizePool)} · winner ${formatINR(prizeTiers[0].amount)} · +${prizeTiers.length - 1} more awards` },
-      { text: "amounts pending final confirmation", tone: "err" },
+      { text: "cash prizes for the winning teams", tone: "ok" },
+      { text: "amounts announced through official channels" },
     ];
   if (c === "rules")
     return [{ text: "assert team.size <= 5;  // the only rule", tone: "ok" }];
-  if (c === "rubric")
-    return rubric.map((r) => ({
-      text: `${r.weight.toString().padStart(2, "0")}  ${r.title.toLowerCase()}`,
-    }));
   if (c === "venue")
     return [{ text: `${event.venue.name}, ${event.venue.institution}` }];
   if (c === "contact")
@@ -65,7 +58,7 @@ function run(cmd: string): Line[] {
     return event.registrationUrl
       ? [{ text: "opening registration form …", tone: "ok" }]
       : [
-          { text: "form link publishes before 11 aug — watch Updates.", tone: "err" },
+          { text: "form link publishes before 17 aug — watch Updates.", tone: "err" },
         ];
   if (c === "whoami") return [{ text: "guest@genesis — future finalist" }];
   if (c === "ls") return [{ text: "ideas/  teams/  prizes/  finale/" }];
@@ -77,7 +70,7 @@ function run(cmd: string): Line[] {
   if (c.startsWith("git"))
     return [
       { text: "on branch idea/your-big-thing — nothing committed yet." },
-      { text: "hint: deadline is 25 aug, 11:59 pm.", tone: "err" },
+      { text: "hint: deadline is 3 sep, 11:59 pm.", tone: "err" },
     ];
   if (c === "clear") return [];
   return [{ text: `command not found: ${c} — try 'help'`, tone: "err" }];

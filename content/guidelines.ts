@@ -14,7 +14,7 @@
 
 export const templateMandate = {
   title: "Submit on the given template. Only.",
-  body: "The Round 1 idea template is provided inside the Google Form itself. Put your idea into it and submit it as a PDF named TeamName_Genesis_Round1. Deviating from the template can mean rejection without evaluation, or evaluation with a deduction — the fixed structure is what makes blind scoring fair.",
+  body: "Download the Round 1 idea template below (it's also linked inside the Google Form). Put your idea into it and submit it as a PDF named TeamName_Genesis_Round1. Deviating from the template can mean rejection without evaluation, or evaluation with a deduction — the fixed structure is what makes blind scoring fair.",
 };
 
 export const googleSignInNote =

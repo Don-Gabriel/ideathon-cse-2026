@@ -58,7 +58,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "Where is the idea template?",
-        a: "Inside the Google Form itself. Fill it in and submit it as a PDF named TeamName_Genesis_Round1 — only the last submission before the deadline counts.",
+        a: "Download it from the Template button in the evaluation section above (it's also linked inside the Google Form). Fill it in and submit it as a PDF named TeamName_Genesis_Round1 — only the last submission before the deadline counts.",
       },
       {
         q: "What if our idea already exists somewhere?",

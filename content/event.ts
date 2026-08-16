@@ -98,9 +98,10 @@ export const event = {
     // Official rule book (Google Drive).
     rulebookPdf:
       "https://drive.google.com/file/d/1WZwQ-FQWxq1WV6JcISF4WHmA3SRlt2x5/view?usp=sharing",
-    // TODO: add the template URL when it is published. Empty string renders
-    // the download button in a "not yet published" state.
-    pptTemplate: "",
+    // Round 1 idea template (Google Slides, direct .pptx download).
+    // View link: https://docs.google.com/presentation/d/1HgJAA2swa0Vz319zepcwoRQAuGzq-qf8/edit
+    pptTemplate:
+      "https://docs.google.com/presentation/d/1HgJAA2swa0Vz319zepcwoRQAuGzq-qf8/export/pptx",
     rulebookVersion: "v1.0",
     // TODO: bump whenever the rulebook changes.
     rulebookUpdated: "2026-08-13",

@@ -25,7 +25,7 @@ export const updates: UpdateEntry[] = [
   {
     date: "2026-08-13",
     title: "Rule book published · registration opens Monday 17 August",
-    body: "The official rule book is now linked on this page. Registration opens Monday 17 August and closes Thursday 3 September, 11:59 PM. Cash prizes will be awarded to the winning teams. The shortlist and grand finale dates will be announced here once fixed.",
+    body: "The official rule book is now linked on this page. Registration opens Monday 17 August and closes Monday 7 September, 11:59 PM. Cash prizes will be awarded to the winning teams. The shortlist and grand finale dates will be announced here once fixed.",
     tag: "RULEBOOK",
   },
   {

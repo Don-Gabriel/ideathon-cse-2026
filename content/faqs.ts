@@ -119,7 +119,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "When is the finale?",
-        a: "The date is being finalised. Registration runs from Monday 17 August to Thursday 3 September; the shortlist and finale dates are announced in Updates once fixed.",
+        a: "The date is being finalised. Registration runs from Monday 17 August to Monday 7 September; the shortlist and finale dates are announced in Updates once fixed.",
       },
       {
         q: "Will I get a certificate?",

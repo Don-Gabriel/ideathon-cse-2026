@@ -33,9 +33,9 @@ export const timelineStages: TimelineStage[] = [
     step: "01",
     buildTag: "source",
     title: "Registration & idea submission",
-    dateLabel: "Mon 17 Aug → Tue 8 Sep, 12:00 PM",
+    dateLabel: "Mon 17 Aug → Wed 9 Sep, 12:00 PM",
     start: "2026-08-17T00:00:00+05:30",
-    end: "2026-09-08T12:00:00+05:30",
+    end: "2026-09-09T12:00:00+05:30",
     description:
       "Form a team of up to five, put your idea into the template given inside the Google Form, and submit it as a PDF before the deadline. One form per team, filled by the team lead.",
   },
@@ -44,7 +44,7 @@ export const timelineStages: TimelineStage[] = [
     step: "02",
     buildTag: "compile",
     title: "Blind screening",
-    dateLabel: "After 8 Sep · dates to be announced",
+    dateLabel: "After 9 Sep · dates to be announced",
     start: "",
     end: "",
     description:

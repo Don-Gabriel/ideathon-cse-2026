@@ -119,7 +119,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "When is the finale?",
-        a: "The final offline round is on Wednesday 16 September, on campus at SSS Block, Department of CSE. Registration ran from Monday 17 August to Tuesday 8 September (12:00 PM); the shortlist date is announced in Updates once fixed.",
+        a: "The final offline round is on Wednesday 16 September, on campus at SSS Block, Department of CSE. Registration ran from Monday 17 August to Wednesday 9 September (12:00 PM); the shortlist date is announced in Updates once fixed.",
       },
       {
         q: "Will I get a certificate?",

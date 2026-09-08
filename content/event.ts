@@ -59,7 +59,7 @@ export interface HeroCopy {
 
 export const eventDates: EventDates = {
   regOpen: "2026-08-17T00:00:00+05:30",
-  regClose: "2026-09-08T12:00:00+05:30",
+  regClose: "2026-09-09T12:00:00+05:30",
   // TODO: fill in once announced. Empty = the site says "to be announced"
   // instead of guessing.
   shortlistAnnounce: "",
@@ -189,7 +189,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaLabel: "Register your team",
     ctaAction: "register",
     ctaDisabled: false,
-    helper: "Extended — closes Tuesday 8 September, 12:00 PM (noon) IST.",
+    helper: "Extended — closes Wednesday 9 September, 12:00 PM (noon) IST.",
     countdownTo: "regClose",
     countdownLabel: "Registration closes in",
   },
@@ -199,7 +199,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "register",
     ctaDisabled: false,
     ctaDanger: true,
-    helper: "Final window. The form closes Tuesday 8 September, 12:00 PM (noon) IST.",
+    helper: "Final window. The form closes Wednesday 9 September, 12:00 PM (noon) IST.",
     countdownTo: "regClose",
     countdownLabel: "Registration closes in",
   },

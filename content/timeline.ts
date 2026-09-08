@@ -33,9 +33,9 @@ export const timelineStages: TimelineStage[] = [
     step: "01",
     buildTag: "source",
     title: "Registration & idea submission",
-    dateLabel: "Mon 17 Aug → Mon 7 Sep, 11:59 PM",
+    dateLabel: "Mon 17 Aug → Tue 8 Sep, 12:00 PM",
     start: "2026-08-17T00:00:00+05:30",
-    end: "2026-09-07T23:59:59+05:30",
+    end: "2026-09-08T12:00:00+05:30",
     description:
       "Form a team of up to five, put your idea into the template given inside the Google Form, and submit it as a PDF before the deadline. One form per team, filled by the team lead.",
   },
@@ -44,7 +44,7 @@ export const timelineStages: TimelineStage[] = [
     step: "02",
     buildTag: "compile",
     title: "Blind screening",
-    dateLabel: "After 7 Sep · dates to be announced",
+    dateLabel: "After 8 Sep · dates to be announced",
     start: "",
     end: "",
     description:
@@ -66,9 +66,9 @@ export const timelineStages: TimelineStage[] = [
     step: "04",
     buildTag: "deploy",
     title: "Grand finale",
-    dateLabel: "To be announced · on campus",
-    start: "",
-    end: "",
+    dateLabel: "Wed 16 Sep · on campus",
+    start: "2026-09-16T00:00:00+05:30",
+    end: "2026-09-16T23:59:59+05:30",
     description:
       "Shortlisted teams pitch live at SSS Block, Department of CSE: 10 minutes per team, maximum 10 slides. Report 30 minutes before the announced start with your college ID card. Winners are announced the same day.",
   },

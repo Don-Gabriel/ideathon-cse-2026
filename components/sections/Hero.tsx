@@ -11,6 +11,7 @@
 import { ArrowRight } from "lucide-react";
 import { event, eventDates, heroByPhase } from "@/content/event";
 import type { PhaseId } from "@/lib/phase";
+import { formatDate } from "@/lib/format";
 import { useLivePhase } from "@/components/ui/useLivePhase";
 import { Countdown } from "@/components/ui/Countdown";
 import { StatusBoard } from "@/components/ui/StatusBoard";
@@ -30,6 +31,11 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
       : hero.countdownTo === "regClose"
         ? eventDates.regClose
         : null;
+
+  // "finale 16 Sep 2026" once announced; a blank date makes no claim.
+  const finaleLabel = eventDates.finaleStart
+    ? `finale ${formatDate(eventDates.finaleStart)}`
+    : "finale date to be announced";
 
   const ctaHref =
     hero.ctaAction === "register"
@@ -67,7 +73,7 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
             </p>
 
             <p className="eyebrow mt-4">
-              <span className="text-phosphor">finale date to be announced</span>
+              <span className="text-phosphor">{finaleLabel}</span>
               <span className="mx-2 text-line">·</span>
               sss block, dept of cse
               <span className="mx-2 text-line">·</span>

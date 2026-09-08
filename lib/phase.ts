@@ -43,8 +43,9 @@ export function parseDate(iso: string | undefined | null): Date | null {
  * making time-based claims instead of making wrong ones.
  *
  * The later dates (shortlist, finale) are allowed to be unannounced — an
- * empty or malformed value simply means the site never advances past the
- * preceding phase, which is exactly the truth: it is not announced yet.
+ * empty or malformed value simply means the site never advances into that
+ * phase, which is exactly the truth: it is not announced yet. A known finale
+ * date is honoured even while the shortlist date is still blank.
  */
 export function derivePhase(now: Date, dates: EventDates = eventDates): PhaseId {
   const regOpen = parseDate(dates.regOpen);
@@ -62,10 +63,14 @@ export function derivePhase(now: Date, dates: EventDates = eventDates): PhaseId 
       ? "REG_CLOSING_SOON"
       : "REG_OPEN";
   }
+  // The finale is announced independently of the shortlist: once its day
+  // arrives it wins, even if the shortlist date was never filled in.
+  if (finaleStart && t >= finaleStart.getTime()) {
+    if (!finaleEnd || t <= finaleEnd.getTime()) return "FINALE_DAY";
+    return "COMPLETE";
+  }
   if (!shortlist || t < shortlist.getTime()) return "REG_CLOSED";
-  if (!finaleStart || t < finaleStart.getTime()) return "SHORTLIST_OUT";
-  if (!finaleEnd || t <= finaleEnd.getTime()) return "FINALE_DAY";
-  return "COMPLETE";
+  return "SHORTLIST_OUT";
 }
 
 /**

@@ -23,6 +23,12 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    date: "2026-09-08",
+    title: "Registration extended to Tuesday 8 September, 12:00 PM · finale on Wednesday 16 September",
+    body: "The registration deadline has been extended to Tuesday 8 September, 12:00 PM (noon) IST — this is the final extension. The final offline round (grand finale) will be held on Wednesday 16 September at SSS Block, Department of CSE. Shortlisted teams will be notified through this page.",
+    tag: "DEADLINE",
+  },
+  {
     date: "2026-08-13",
     title: "Rule book published · registration opens Monday 17 August",
     body: "The official rule book is now linked on this page. Registration opens Monday 17 August and closes Monday 7 September, 11:59 PM. Cash prizes will be awarded to the winning teams. The shortlist and grand finale dates will be announced here once fixed.",

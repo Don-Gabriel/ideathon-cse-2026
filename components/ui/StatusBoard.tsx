@@ -17,7 +17,7 @@
 
 import { eventDates } from "@/content/event";
 import type { PhaseId } from "@/lib/phase";
-import { formatDate } from "@/lib/format";
+import { formatDate, formatTime } from "@/lib/format";
 
 /** "2026-08-17T00:00:00+05:30" -> "17 Aug". Empty/malformed -> null. */
 function shortDate(iso: string | undefined): string | null {
@@ -29,7 +29,14 @@ function shortDate(iso: string | undefined): string | null {
 
 function headline(phase: PhaseId): { label: string; text: string; danger?: boolean } {
   const opens = shortDate(eventDates.regOpen);
-  const closes = shortDate(eventDates.regClose);
+  const closeDay = shortDate(eventDates.regClose);
+  const closeTime = formatTime(eventDates.regClose);
+  const closes = closeDay
+    ? closeTime
+      ? `${closeDay}, ${closeTime}`
+      : closeDay
+    : null;
+  const finale = shortDate(eventDates.finaleStart);
 
   switch (phase) {
     case "BEFORE_OPEN":
@@ -49,7 +56,10 @@ function headline(phase: PhaseId): { label: string; text: string; danger?: boole
         danger: true,
       };
     case "REG_CLOSED":
-      return { label: "happening now", text: "Screening in progress" };
+      return {
+        label: "happening now",
+        text: finale ? `Screening in progress — finale ${finale}` : "Screening in progress",
+      };
     case "SHORTLIST_OUT":
       return { label: "happening now", text: "Shortlist published" };
     case "FINALE_DAY":

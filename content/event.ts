@@ -59,12 +59,13 @@ export interface HeroCopy {
 
 export const eventDates: EventDates = {
   regOpen: "2026-08-17T00:00:00+05:30",
-  regClose: "2026-09-07T23:59:59+05:30",
+  regClose: "2026-09-08T12:00:00+05:30",
   // TODO: fill in once announced. Empty = the site says "to be announced"
   // instead of guessing.
   shortlistAnnounce: "",
-  finaleStart: "",
-  finaleEnd: "",
+  // Final offline round: Wednesday 16 September 2026, on campus.
+  finaleStart: "2026-09-16T00:00:00+05:30",
+  finaleEnd: "2026-09-16T23:59:59+05:30",
 };
 
 export const event = {
@@ -188,7 +189,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaLabel: "Register your team",
     ctaAction: "register",
     ctaDisabled: false,
-    helper: "Closes Monday 7 September, 11:59 PM IST.",
+    helper: "Extended — closes Tuesday 8 September, 12:00 PM (noon) IST.",
     countdownTo: "regClose",
     countdownLabel: "Registration closes in",
   },
@@ -198,7 +199,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "register",
     ctaDisabled: false,
     ctaDanger: true,
-    helper: "Final window. The form closes Monday 7 September, 11:59 PM IST.",
+    helper: "Final window. The form closes Tuesday 8 September, 12:00 PM (noon) IST.",
     countdownTo: "regClose",
     countdownLabel: "Registration closes in",
   },
@@ -208,7 +209,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "none",
     ctaDisabled: true,
     helper:
-      "Submissions are with the evaluators. The shortlist date will be announced in Updates.",
+      "Submissions are with the evaluators. The shortlist will be posted in Updates; the final offline round is on Wednesday 16 September.",
   },
   SHORTLIST_OUT: {
     status: "status: shortlist published",
@@ -216,7 +217,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "updates",
     ctaDisabled: false,
     helper:
-      "The top 20 teams are through to the finale. The finale date will be announced in Updates.",
+      "The top 20 teams are through to the finale — the final offline round is on Wednesday 16 September. Details in Updates.",
   },
   FINALE_DAY: {
     status: "status: live today",

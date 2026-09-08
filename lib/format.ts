@@ -30,6 +30,15 @@ export function formatINR(amount: number): string {
   return `${amount < 0 ? "-" : ""}₹${grouped}`;
 }
 
+/** "2026-09-08T12:00:00+05:30" -> "12:00 PM". Null if no time present. */
+export function formatTime(iso: string): string | null {
+  const m = /T(\d{2}):(\d{2})/.exec(iso);
+  if (!m) return null;
+  const h = Number(m[1]);
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${h12}:${m[2]} ${h < 12 ? "AM" : "PM"}`;
+}
+
 /** Two-digit pad for countdown cells. */
 export function pad2(n: number): string {
   return String(n).padStart(2, "0");

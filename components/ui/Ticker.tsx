@@ -13,7 +13,7 @@ const FACTS = [
   "entry fee ₹0",
   "blind evaluation",
   "top 20 pitch live",
-  "finale — wed 16 sep — sss block, dept of cse",
+  "finale — wed 16 sep — venue to be announced",
   event.presenterShort.toLowerCase(),
 ];
 

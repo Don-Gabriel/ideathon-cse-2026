@@ -70,7 +70,7 @@ const jsonLd = {
   isAccessibleForFree: true,
   location: {
     "@type": "Place",
-    name: event.venue.name,
+    name: event.venue.institution,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Tirunelveli",

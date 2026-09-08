@@ -25,7 +25,7 @@ export const updates: UpdateEntry[] = [
   {
     date: "2026-09-08",
     title: "Registration extended to Wednesday 9 September, 12:00 PM · finale on Wednesday 16 September",
-    body: "The registration deadline has been extended to Wednesday 9 September, 12:00 PM (noon) IST — this is the final extension. The final offline round (grand finale) will be held on Wednesday 16 September at SSS Block, Department of CSE. Shortlisted teams will be notified through this page.",
+    body: "The registration deadline has been extended to Wednesday 9 September, 12:00 PM (noon) IST — this is the final extension. The final offline round (grand finale) will be held on Wednesday 16 September; the venue will be announced here. Shortlisted teams will be notified through this page.",
     tag: "DEADLINE",
   },
   {

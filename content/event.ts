@@ -63,7 +63,7 @@ export const eventDates: EventDates = {
   // TODO: fill in once announced. Empty = the site says "to be announced"
   // instead of guessing.
   shortlistAnnounce: "",
-  // Final offline round: Wednesday 16 September 2026, on campus.
+  // Final offline round: Wednesday 16 September 2026. Venue to be announced.
   finaleStart: "2026-09-16T00:00:00+05:30",
   finaleEnd: "2026-09-16T23:59:59+05:30",
 };
@@ -87,7 +87,8 @@ export const event = {
   siteUrl: "https://ideathon-cse-2026.vercel.app",
 
   venue: {
-    name: "SSS Block, Department of Computer Science & Engineering",
+    // TODO: replace once the committee fixes the finale venue.
+    name: "Venue to be announced",
     institution: "Government College of Engineering, Tirunelveli",
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Government+College+of+Engineering+Tirunelveli",
@@ -225,7 +226,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "contact",
     ctaDisabled: false,
     helper:
-      "Grand finale at SSS Block, Department of CSE. Reporting details are in Updates.",
+      "Grand finale today. Venue and reporting details are in Updates.",
   },
   COMPLETE: {
     status: "status: complete",

@@ -66,10 +66,10 @@ export const timelineStages: TimelineStage[] = [
     step: "04",
     buildTag: "deploy",
     title: "Grand finale",
-    dateLabel: "Wed 16 Sep · on campus",
+    dateLabel: "Wed 16 Sep · venue to be announced",
     start: "2026-09-16T00:00:00+05:30",
     end: "2026-09-16T23:59:59+05:30",
     description:
-      "Shortlisted teams pitch live at SSS Block, Department of CSE: 10 minutes per team, maximum 10 slides. Report 30 minutes before the announced start with your college ID card. Winners are announced the same day.",
+      "Shortlisted teams pitch live (venue to be announced): 10 minutes per team, maximum 10 slides. Report 30 minutes before the announced start with your college ID card. Winners are announced the same day.",
   },
 ];

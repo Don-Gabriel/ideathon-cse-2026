@@ -39,7 +39,7 @@ const announced = {
   finaleEnd: "2026-09-20T23:59:59+05:30",
 };
 const announcedCases: Array<[string, string]> = [
-  ["2026-09-09T12:00:00+05:30", "REG_CLOSED"],
+  ["2026-09-09T13:00:00+05:30", "REG_CLOSED"],
   ["2026-09-10T09:00:00+05:30", "SHORTLIST_OUT"],
   ["2026-09-20T10:00:00+05:30", "FINALE_DAY"],
   ["2026-09-21T00:00:00+05:30", "COMPLETE"],
@@ -72,7 +72,7 @@ timelineStages.forEach((s, i) => {
 });
 
 // After the deadline: stage 1 complete, unannounced stages stay queued.
-const afterClose = new Date("2026-09-09T12:00:00+05:30");
+const afterClose = new Date("2026-09-09T13:00:00+05:30");
 const expectedAfter = ["COMPLETE", "QUEUED", "QUEUED", "QUEUED"]; // finale has dates but is still ahead
 timelineStages.forEach((s, i) => {
   const got = deriveStageStatus(afterClose, s.start, s.end);

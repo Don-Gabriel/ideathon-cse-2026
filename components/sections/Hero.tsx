@@ -30,7 +30,9 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
       ? eventDates.regOpen
       : hero.countdownTo === "regClose"
         ? eventDates.regClose
-        : null;
+        : hero.countdownTo === "finaleStart"
+          ? eventDates.finaleStart
+          : null;
 
   // "finale 16 Sep 2026" once announced; a blank date makes no claim.
   const finaleLabel = eventDates.finaleStart

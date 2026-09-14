@@ -6,7 +6,7 @@
 import { derivePhase, deriveStageStatus, countdownTo } from "../lib/phase";
 import { timelineStages } from "../content/timeline";
 
-// Live config: reg 17 Aug -> 9 Sep 2026 12:00 PM; finale 16 Sep; shortlist unannounced.
+// Live config: reg 17 Aug -> 9 Sep 2026 12:00 PM; shortlist 11 Sep; finale 16 Sep.
 const cases: Array<[string, string]> = [
   ["2026-08-13T12:00:00+05:30", "BEFORE_OPEN"], // today, before opening
   ["2026-08-16T23:59:59+05:30", "BEFORE_OPEN"], // last second before open
@@ -16,8 +16,10 @@ const cases: Array<[string, string]> = [
   ["2026-09-07T12:00:00+05:30", "REG_CLOSING_SOON"], // inside final 48h
   ["2026-09-09T12:00:00+05:30", "REG_CLOSING_SOON"], // deadline second (noon)
   ["2026-09-09T12:00:01+05:30", "REG_CLOSED"], // just closed
-  ["2026-09-15T23:59:59+05:30", "REG_CLOSED"], // stays here while the shortlist date is unannounced
-  ["2026-09-16T00:00:00+05:30", "FINALE_DAY"], // finale day, shortlist still blank
+  ["2026-09-10T23:59:59+05:30", "REG_CLOSED"], // screening, results not out yet
+  ["2026-09-11T00:00:00+05:30", "SHORTLIST_OUT"], // results announced
+  ["2026-09-15T23:59:59+05:30", "SHORTLIST_OUT"], // holds until finale day
+  ["2026-09-16T00:00:00+05:30", "FINALE_DAY"], // finale day
   ["2026-09-16T23:59:59+05:30", "FINALE_DAY"], // last second of the finale
   ["2026-09-17T00:00:00+05:30", "COMPLETE"], // wrapped
 ];
@@ -73,7 +75,7 @@ timelineStages.forEach((s, i) => {
 
 // After the deadline: stage 1 complete, unannounced stages stay queued.
 const afterClose = new Date("2026-09-09T13:00:00+05:30");
-const expectedAfter = ["COMPLETE", "QUEUED", "QUEUED", "QUEUED"]; // finale has dates but is still ahead
+const expectedAfter = ["COMPLETE", "LIVE", "QUEUED", "QUEUED"]; // screening under way
 timelineStages.forEach((s, i) => {
   const got = deriveStageStatus(afterClose, s.start, s.end);
   const ok = got === expectedAfter[i];

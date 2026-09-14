@@ -53,16 +53,16 @@ export interface HeroCopy {
   ctaDanger?: boolean;
   helper: string;
   /** Which date the hero countdown targets, if any. */
-  countdownTo?: "regOpen" | "regClose";
+  countdownTo?: "regOpen" | "regClose" | "finaleStart";
   countdownLabel?: string;
 }
 
 export const eventDates: EventDates = {
   regOpen: "2026-08-17T00:00:00+05:30",
   regClose: "2026-09-09T12:00:00+05:30",
-  // TODO: fill in once announced. Empty = the site says "to be announced"
-  // instead of guessing.
-  shortlistAnnounce: "",
+  // Round 1 results announced Friday 11 September 2026, by mail to each
+  // selected team's leader.
+  shortlistAnnounce: "2026-09-11T00:00:00+05:30",
   // Final offline round: Wednesday 16 September 2026. Venue to be announced.
   finaleStart: "2026-09-16T00:00:00+05:30",
   finaleEnd: "2026-09-16T23:59:59+05:30",
@@ -210,15 +210,17 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "none",
     ctaDisabled: true,
     helper:
-      "Submissions are with the evaluators. The shortlist will be posted in Updates; the final offline round is on Wednesday 16 September.",
+      "Submissions are with the evaluators. Selected teams are informed by mail; the final offline round is on Wednesday 16 September.",
   },
   SHORTLIST_OUT: {
-    status: "status: shortlist published",
-    ctaLabel: "View shortlisted teams",
+    status: "status: round 1 results out",
+    ctaLabel: "Read the announcement",
     ctaAction: "updates",
     ctaDisabled: false,
     helper:
-      "The top 20 teams are through to the finale — the final offline round is on Wednesday 16 September. Details in Updates.",
+      "Selected teams have been informed by mail — check your inbox and spam folder.",
+    countdownTo: "finaleStart",
+    countdownLabel: "Grand finale in",
   },
   FINALE_DAY: {
     status: "status: live today",

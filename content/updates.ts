@@ -23,6 +23,12 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    date: "2026-09-11",
+    title: "Round 1 results are out · grand finale on Wednesday 16 September",
+    body: "The Round 1 results have been announced. Every selected team has been informed by mail to the team leader — please check your inbox and spam folder. That mail carries the link to the official WhatsApp group, where all further details about the final round are shared. The grand finale is on Wednesday 16 September; the venue is announced in the group and here. Thank you to every team that entered.",
+    tag: "RESULT",
+  },
+  {
     date: "2026-09-08",
     title: "Registration extended to Wednesday 9 September, 12:00 PM · finale on Wednesday 16 September",
     body: "The registration deadline has been extended to Wednesday 9 September, 12:00 PM (noon) IST — this is the final extension. The final offline round (grand finale) will be held on Wednesday 16 September; the venue will be announced here. Shortlisted teams will be notified through this page.",

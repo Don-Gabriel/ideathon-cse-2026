@@ -61,7 +61,10 @@ function headline(phase: PhaseId): { label: string; text: string; danger?: boole
         text: finale ? `Screening in progress — finale ${finale}` : "Screening in progress",
       };
     case "SHORTLIST_OUT":
-      return { label: "happening now", text: "Shortlist published" };
+      return {
+        label: "up next",
+        text: finale ? `Grand finale ${finale}` : "Round 1 results are out",
+      };
     case "FINALE_DAY":
       return { label: "happening now", text: "Grand finale — live today" };
     case "COMPLETE":

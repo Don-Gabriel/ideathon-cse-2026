@@ -119,7 +119,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "When is the finale?",
-        a: "The final offline round is on Wednesday 16 September; the venue will be announced in Updates. Registration ran from Monday 17 August to Wednesday 9 September (12:00 PM); the shortlist date is announced in Updates once fixed.",
+        a: "The grand finale is on Wednesday 16 September; the venue is announced in the official WhatsApp group and in Updates. Round 1 results are already out — every selected team was informed by mail to the team leader.",
       },
       {
         q: "Will I get a certificate?",

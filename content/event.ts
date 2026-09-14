@@ -63,7 +63,7 @@ export const eventDates: EventDates = {
   // Round 1 results announced Friday 11 September 2026, by mail to each
   // selected team's leader.
   shortlistAnnounce: "2026-09-11T00:00:00+05:30",
-  // Final offline round: Wednesday 16 September 2026. Venue to be announced.
+  // Final offline round: Wednesday 16 September 2026, Placement Hall.
   finaleStart: "2026-09-16T00:00:00+05:30",
   finaleEnd: "2026-09-16T23:59:59+05:30",
 };
@@ -87,8 +87,7 @@ export const event = {
   siteUrl: "https://ideathon-cse-2026.vercel.app",
 
   venue: {
-    // TODO: replace once the committee fixes the finale venue.
-    name: "Venue to be announced",
+    name: "Placement Hall",
     institution: "Government College of Engineering, Tirunelveli",
     mapLink:
       "https://www.google.com/maps/search/?api=1&query=Government+College+of+Engineering+Tirunelveli",
@@ -218,7 +217,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "updates",
     ctaDisabled: false,
     helper:
-      "Selected teams have been informed by mail — check your inbox and spam folder.",
+      "Selected teams have been informed by mail. The finale is at the Placement Hall.",
     countdownTo: "finaleStart",
     countdownLabel: "Grand finale in",
   },
@@ -228,7 +227,7 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
     ctaAction: "contact",
     ctaDisabled: false,
     helper:
-      "Grand finale today. Venue and reporting details are in Updates.",
+      "Grand finale today at the Placement Hall. Reporting details are in Updates.",
   },
   COMPLETE: {
     status: "status: complete",

@@ -23,6 +23,12 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    date: "2026-09-14",
+    title: "Finale venue confirmed · Placement Hall, Wednesday 16 September",
+    body: "The grand finale will be held at the Placement Hall, Government College of Engineering, Tirunelveli, on Wednesday 16 September. Selected teams should report 30 minutes before the announced start with a college ID card for every member. The reporting time and the running order are shared in the official WhatsApp group.",
+    tag: "RESULT",
+  },
+  {
     date: "2026-09-11",
     title: "Round 1 results are out · grand finale on Wednesday 16 September",
     body: "The Round 1 results have been announced. Every selected team has been informed by mail to the team leader — please check your inbox and spam folder. That mail carries the link to the official WhatsApp group, where all further details about the final round are shared. The grand finale is on Wednesday 16 September; the venue is announced in the group and here. Thank you to every team that entered.",

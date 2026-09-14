@@ -119,7 +119,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: "When is the finale?",
-        a: "The grand finale is on Wednesday 16 September; the venue is announced in the official WhatsApp group and in Updates. Round 1 results are already out — every selected team was informed by mail to the team leader.",
+        a: "The grand finale is on Wednesday 16 September at the Placement Hall, Government College of Engineering, Tirunelveli. Round 1 results are already out — every selected team was informed by mail to the team leader.",
       },
       {
         q: "Will I get a certificate?",

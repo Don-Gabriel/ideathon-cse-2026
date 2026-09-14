@@ -77,7 +77,7 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
             <p className="eyebrow mt-4">
               <span className="text-phosphor">{finaleLabel}</span>
               <span className="mx-2 text-line">·</span>
-              venue to be announced
+              {event.venue.name.toLowerCase()}
               <span className="mx-2 text-line">·</span>
               intra-college
             </p>

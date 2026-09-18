@@ -40,7 +40,7 @@ export function Timeline({ buildNowIso }: { buildNowIso: string }) {
   return (
     <Section
       id="timeline"
-      eyebrow="03 · timeline"
+      eyebrow="04 · timeline"
       title="Where the event stands"
       lead="This pipeline reads today's date. Whatever it shows is current — no announcement needed, nothing to double-check."
     >

@@ -17,7 +17,7 @@ export function HowItWorks() {
   return (
     <Section
       id="how-it-works"
-      eyebrow="02 · pipeline"
+      eyebrow="03 · pipeline"
       title="How it works"
       lead="Four stages. You act in the first and the last; the two in between happen to your submission."
     >

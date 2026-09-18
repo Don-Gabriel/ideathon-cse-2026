@@ -23,6 +23,12 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    date: "2026-09-16",
+    title: "GENESIS Ideathon 1.0 results · Team ThinkX take first prize",
+    body: "The grand finale was held at the Placement Hall on Wednesday 16 September. First prize goes to Team ThinkX, second prize to ResQSquad, and third place is shared between Ray Breakers and Nexora. Congratulations to all four teams, and thank you to every team that entered the first edition of GENESIS. The full podium is in the Results section at the top of this page.",
+    tag: "RESULT",
+  },
+  {
     date: "2026-09-14",
     title: "Finale venue confirmed · Placement Hall, Wednesday 16 September",
     body: "The grand finale will be held at the Placement Hall, Government College of Engineering, Tirunelveli, on Wednesday 16 September. Selected teams should report 30 minutes before the announced start with a college ID card for every member. The reporting time and the running order are shared in the official WhatsApp group.",

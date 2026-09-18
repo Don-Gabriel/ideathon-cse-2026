@@ -10,6 +10,7 @@ import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { Chrome } from "@/components/ui/Chrome";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { Ticker } from "@/components/ui/Ticker";
+import { Winners } from "@/components/sections/Winners";
 import { About } from "@/components/sections/About";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Timeline } from "@/components/sections/Timeline";
@@ -50,6 +51,7 @@ export default function Home() {
         <Hero buildPhase={buildPhase} />
         <Ticker />
         <AnnouncementBar freshAtBuild={freshAtBuild} />
+        <Winners />
         <About />
         <HowItWorks />
         <Timeline buildNowIso={buildNow.toISOString()} />

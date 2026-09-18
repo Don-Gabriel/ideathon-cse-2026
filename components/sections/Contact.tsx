@@ -29,7 +29,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      eyebrow="08 · support"
+      eyebrow="09 · support"
       title="Q&A desk"
     >
       <Reveal>

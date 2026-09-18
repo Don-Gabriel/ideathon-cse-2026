@@ -12,6 +12,7 @@ import { ArrowRight } from "lucide-react";
 import { event, eventDates, heroByPhase } from "@/content/event";
 import type { PhaseId } from "@/lib/phase";
 import { formatDate } from "@/lib/format";
+import { ctaHref as resolveCta } from "@/lib/cta";
 import { useLivePhase } from "@/components/ui/useLivePhase";
 import { Countdown } from "@/components/ui/Countdown";
 import { StatusBoard } from "@/components/ui/StatusBoard";
@@ -24,7 +25,6 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
   const { phase } = useLivePhase(buildPhase);
 
   const hero = heroByPhase[phase];
-  const registerHref = event.registrationUrl || "#contact";
   const countdownTarget =
     hero.countdownTo === "regOpen"
       ? eventDates.regOpen
@@ -39,14 +39,7 @@ export function Hero({ buildPhase }: { buildPhase: PhaseId }) {
     ? `finale ${formatDate(eventDates.finaleStart)}`
     : "finale date to be announced";
 
-  const ctaHref =
-    hero.ctaAction === "register"
-      ? registerHref
-      : hero.ctaAction === "updates"
-        ? "#updates"
-        : hero.ctaAction === "contact"
-          ? "#contact"
-          : null;
+  const ctaHref = resolveCta(hero);
 
   return (
     <div

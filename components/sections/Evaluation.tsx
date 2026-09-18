@@ -51,7 +51,7 @@ export function Evaluation() {
   return (
     <Section
       id="submission"
-      eyebrow="04 · submission"
+      eyebrow="05 · submission"
       title="How to submit"
       lead="What the panel is looking for, and the one format it accepts."
     >

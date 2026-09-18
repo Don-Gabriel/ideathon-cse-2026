@@ -46,7 +46,7 @@ export interface HeroCopy {
   status: string;
   ctaLabel: string;
   /** Where the primary CTA points. "register" uses registrationUrl. */
-  ctaAction: "register" | "updates" | "contact" | "none";
+  ctaAction: "register" | "updates" | "results" | "contact" | "none";
   /** Disabled CTAs render as static chips, not buttons. */
   ctaDisabled: boolean;
   /** Uses the danger accent (final-48-hours urgency). */
@@ -163,6 +163,7 @@ export const event = {
 };
 
 export const navLinks = [
+  { label: "Results", href: "#results" },
   { label: "About", href: "#about" },
   { label: "Stages", href: "#how-it-works" },
   { label: "Timeline", href: "#timeline" },
@@ -230,11 +231,12 @@ export const heroByPhase: Record<PhaseId, HeroCopy> = {
       "Grand finale today at the Placement Hall. Reporting details are in Updates.",
   },
   COMPLETE: {
-    status: "status: complete",
-    ctaLabel: "Thank you",
-    ctaAction: "updates",
+    status: "status: results declared",
+    ctaLabel: "See the winners",
+    ctaAction: "results",
     ctaDisabled: false,
-    helper: "GENESIS 1.0 is a wrap. Results and photos are in Updates.",
+    helper:
+      "GENESIS 1.0 is a wrap. Thank you to every team that entered — the podium is below.",
   },
   UNKNOWN: {
     // Fallback if a date in config is missing or malformed — the site keeps

@@ -12,7 +12,7 @@ export function About() {
   return (
     <Section
       id="about"
-      eyebrow="01 · about"
+      eyebrow="02 · about"
       title="A competition of ideas, not prototypes"
     >
       <div className="grid gap-5 md:grid-cols-2">

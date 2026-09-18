@@ -18,6 +18,7 @@
 import { eventDates } from "@/content/event";
 import type { PhaseId } from "@/lib/phase";
 import { formatDate, formatTime } from "@/lib/format";
+import { champion } from "@/content/winners";
 
 /** "2026-08-17T00:00:00+05:30" -> "17 Aug". Empty/malformed -> null. */
 function shortDate(iso: string | undefined): string | null {
@@ -68,7 +69,10 @@ function headline(phase: PhaseId): { label: string; text: string; danger?: boole
     case "FINALE_DAY":
       return { label: "happening now", text: "Grand finale — live today" };
     case "COMPLETE":
-      return { label: "status", text: "GENESIS 1.0 complete" };
+      return {
+        label: "champions",
+        text: champion ? `${champion} win GENESIS 1.0` : "GENESIS 1.0 complete",
+      };
     default:
       return { label: "status", text: "Schedule being finalised" };
   }

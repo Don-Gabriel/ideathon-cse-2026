@@ -18,7 +18,7 @@ export function Faq() {
   return (
     <Section
       id="faq"
-      eyebrow="07 · faq"
+      eyebrow="08 · faq"
       title="Questions, answered"
       lead="If yours isn't here, call a coordinator — and if it's one others will have, it gets added here."
     >

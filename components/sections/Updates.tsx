@@ -12,7 +12,7 @@ export function Updates() {
   return (
     <Section
       id="updates"
-      eyebrow="06 · updates"
+      eyebrow="07 · updates"
       title="Official announcements"
       lead="Everything that matters gets posted here, whatever else it's announced on. If it isn't here, it isn't official."
     >

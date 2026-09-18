@@ -10,6 +10,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { event, heroByPhase, navLinks } from "@/content/event";
+import { ctaHref as resolveCta } from "@/lib/cta";
 import type { PhaseId } from "@/lib/phase";
 import { useLivePhase } from "@/components/ui/useLivePhase";
 
@@ -22,6 +23,15 @@ export function Nav({ buildPhase }: { buildPhase: PhaseId }) {
   const hero = heroByPhase[phase];
   const registerHref = event.registrationUrl || "#contact";
   const registerLive = !hero.ctaDisabled && hero.ctaAction === "register";
+  // Where the non-register CTA goes. Falls back to the timeline when the
+  // phase has no link of its own (e.g. BEFORE_OPEN).
+  const fallbackHref = resolveCta(hero) ?? "#timeline";
+  const chipLabel =
+    phase === "BEFORE_OPEN"
+      ? "Opens soon"
+      : phase === "COMPLETE"
+        ? "Results out"
+        : "Registration closed";
 
   // Scroll spy
   useEffect(() => {
@@ -101,10 +111,10 @@ export function Nav({ buildPhase }: { buildPhase: PhaseId }) {
               </a>
             ) : (
               <a
-                href="#timeline"
+                href={fallbackHref}
                 className="hidden rounded-sm border border-line bg-panel px-4 py-2 font-mono text-[0.78rem] font-medium uppercase tracking-[0.12em] text-muted transition-colors hover:border-muted md:block"
               >
-                {phase === "BEFORE_OPEN" ? "Opens soon" : "Registration closed"}
+                {chipLabel}
               </a>
             )}
             <button
@@ -194,7 +204,7 @@ export function Nav({ buildPhase }: { buildPhase: PhaseId }) {
           </a>
         ) : (
           <a
-            href={hero.ctaAction === "none" ? "#timeline" : "#updates"}
+            href={fallbackHref}
             className="block rounded-sm border border-line bg-panel px-5 py-3 text-center font-mono text-sm font-medium uppercase tracking-[0.12em] text-muted"
           >
             {hero.ctaLabel}

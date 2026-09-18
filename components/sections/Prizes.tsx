@@ -11,7 +11,7 @@ import { certificates, prizeStatement } from "@/content/prizes";
 
 export function Prizes() {
   return (
-    <Section id="prizes" eyebrow="05 · prizes" title="What's at stake">
+    <Section id="prizes" eyebrow="06 · prizes" title="What's at stake">
       <Reveal>
         <div className="shimmer-ring relative overflow-hidden rounded-sm border border-phosphor/40">
           <GlowCard className="relative z-10 m-px flex flex-col gap-4 rounded-sm bg-panel p-6 sm:flex-row sm:items-start sm:gap-6 sm:p-8">

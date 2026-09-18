@@ -5,8 +5,10 @@
  */
 
 import { event } from "@/content/event";
+import { champion } from "@/content/winners";
 
 const FACTS = [
+  ...(champion ? [`champions — ${champion.toLowerCase()}`] : []),
   "open innovation — any domain",
   "teams of up to 5",
   "cash prizes for the winners",
@@ -14,6 +16,7 @@ const FACTS = [
   "blind evaluation",
   "top 20 pitch live",
   "finale — wed 16 sep — placement hall",
+  "genesis 1.0 — complete",
   event.presenterShort.toLowerCase(),
 ];
 

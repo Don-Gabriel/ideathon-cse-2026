@@ -14,8 +14,8 @@
  */
 
 export const prizeStatement = {
-  headline: "Cash prizes will be awarded.",
-  body: "Cash prizes go to the winning teams at the grand finale. Amounts are announced through the official channels — watch Updates on this page.",
+  headline: "Cash prizes were awarded.",
+  body: "Cash prizes went to the winning teams at the grand finale on Wednesday 16 September. The podium is in the Results section at the top of this page.",
 };
 
 /**
@@ -26,6 +26,6 @@ export const certificates = [
   {
     title: "Certificates for the top 3",
     detail:
-      "The three winning teams receive certificates, presented at the grand finale.",
+      "Certificates go to the three winning places, presented at the grand finale.",
   },
 ];
